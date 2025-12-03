@@ -1,0 +1,84 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "trace-scraper"
+version = "1.0.0"
+description = "Trace: High-performance async web scraper with parallel processing."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+authors = [
+    { name = "Rishabh", email = "rishabh@lumiora.co" }
+]
+keywords = ["web scraper", "crawler", "async", "playwright", "httpx", "trace"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Typing :: Typed",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Framework :: AsyncIO",
+]
+dependencies = [
+    "httpx>=0.25.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=4.9.0",
+    "playwright>=1.40.0",
+]
+
+[project.optional-dependencies]
+pdf = ["pypdf>=3.17.0"]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "ruff>=0.1.0",
+    "mypy>=1.7.0",
+]
+all = [
+    "pypdf>=3.17.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/rishabhlumiora/trace-scraper"
+Repository = "https://github.com/rishabhlumiora/trace-scraper"
+Issues = "https://github.com/rishabhlumiora/trace-scraper/issues"
+
+[project.scripts]
+trace = "trace.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["trace"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/trace",
+    "/examples",
+    "/tests",
+    "/README.md",
+    "/LICENSE",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "B", "UP"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_ignores = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
