@@ -5,26 +5,58 @@ build-backend = "hatchling.build"
 [project]
 name = "trace-scraper"
 version = "1.0.0"
-description = "Trace: High-performance async web scraper with parallel processing."
+description = "High-performance async web scraper with Playwright and httpx. Scrape JavaScript-rendered pages, crawl websites recursively, parse sitemaps, and extract content with anti-bot bypass."
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.11"
 authors = [
     { name = "Rishabh", email = "rishabh@lumiora.co" }
 ]
-keywords = ["web scraper", "crawler", "async", "playwright", "httpx", "trace"]
+keywords = [
+    "web-scraper",
+    "web-scraping",
+    "scraper",
+    "scraping",
+    "crawler",
+    "web-crawler",
+    "spider",
+    "playwright",
+    "httpx",
+    "async",
+    "asyncio",
+    "beautifulsoup",
+    "html-parser",
+    "sitemap",
+    "sitemap-parser",
+    "javascript-rendering",
+    "headless-browser",
+    "data-extraction",
+    "content-extraction",
+    "pdf-extraction",
+    "anti-bot",
+    "rate-limiting",
+]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Information Technology",
     "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3 :: Only",
     "Typing :: Typed",
     "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
+    "Topic :: Internet :: WWW/HTTP :: Site Management :: Link Checking",
     "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing :: Markup :: HTML",
     "Framework :: AsyncIO",
+    "Environment :: Console",
+    "Natural Language :: English",
 ]
 dependencies = [
     "httpx>=0.25.0",
@@ -47,8 +79,10 @@ all = [
 
 [project.urls]
 Homepage = "https://github.com/boxed-dev/trace"
+Documentation = "https://github.com/boxed-dev/trace#readme"
 Repository = "https://github.com/boxed-dev/trace"
 Issues = "https://github.com/boxed-dev/trace/issues"
+Changelog = "https://github.com/boxed-dev/trace/releases"
 
 [project.scripts]
 trace = "trace_scraper.cli:main"
