@@ -85,7 +85,8 @@ Issues = "https://github.com/boxed-dev/trace/issues"
 Changelog = "https://github.com/boxed-dev/trace/releases"
 
 [project.scripts]
-trace = "trace_scraper.cli:main"
+trace-scraper = "trace_scraper.cli:main"
+tscraper = "trace_scraper.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["trace_scraper"]

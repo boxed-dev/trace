@@ -34,20 +34,22 @@ playwright install chromium
 
 ```bash
 # Scrape a single page
-trace https://example.com
+trace-scraper https://example.com
 
 # Crawl entire website
-trace https://docs.example.com --mode recursive --max-pages 100
+trace-scraper https://docs.example.com --mode recursive --max-pages 100
 
 # Parse sitemap
-trace https://example.com/sitemap.xml --mode sitemap
+trace-scraper https://example.com/sitemap.xml --mode sitemap
 
 # Use browser for JavaScript sites
-trace https://spa-website.com --browser
+trace-scraper https://spa-website.com --browser
 
 # Save to JSON
-trace https://example.com -o output.json
+trace-scraper https://example.com -o output.json
 ```
+
+> **Tip:** You can also use `tscraper` as a shorter alias.
 
 ### Python API
 
