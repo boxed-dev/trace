@@ -11,9 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 async def get_sitemap_locations_from_robots(
-    client: httpx.AsyncClient,
-    base_url: str,
-    timeout: float = 10.0
+    client: httpx.AsyncClient, base_url: str, timeout: float = 10.0
 ) -> set[str]:
     """Extract sitemap URLs from robots.txt."""
     sitemap_urls: set[str] = set()
@@ -35,7 +33,7 @@ async def extract_urls_from_sitemap(
     sitemap_url: str,
     timeout: float = 10.0,
     max_depth: int = 3,
-    _depth: int = 0
+    _depth: int = 0,
 ) -> set[str]:
     """Extract URLs from a sitemap XML file.
 
@@ -81,9 +79,7 @@ async def extract_urls_from_sitemap(
 
 
 async def discover_urls_from_site(
-    base_url: str,
-    timeout: float = 10.0,
-    max_depth: int = 3
+    base_url: str, timeout: float = 10.0, max_depth: int = 3
 ) -> list[str]:
     """Discover all URLs from a site's sitemaps.
 

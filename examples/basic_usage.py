@@ -96,17 +96,16 @@ async def example_high_performance():
     print("\n=== High Performance Config ===")
 
     config = ScraperConfig(
-        max_concurrent_pages=20,      # More parallel pages
-        max_concurrent_browsers=5,    # More browser contexts
-        page_timeout=15.0,            # Shorter timeout
-        request_timeout=5.0,          # Fast HTTP timeout
-        delay_between_requests=0.0,   # No delay (use with caution!)
-        use_browser_for_all=False,    # Use httpx where possible
-        deduplicate_content=True,     # Skip duplicate content
+        max_concurrent_pages=20,  # More parallel pages
+        max_concurrent_browsers=5,  # More browser contexts
+        page_timeout=15.0,  # Shorter timeout
+        request_timeout=5.0,  # Fast HTTP timeout
+        delay_between_requests=0.0,  # No delay (use with caution!)
+        use_browser_for_all=False,  # Use httpx where possible
+        deduplicate_content=True,  # Skip duplicate content
     )
 
-    print(f"Config: {config.max_concurrent_pages} concurrent, "
-          f"{config.page_timeout}s timeout")
+    print(f"Config: {config.max_concurrent_pages} concurrent, {config.page_timeout}s timeout")
 
 
 async def example_with_callback():

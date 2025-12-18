@@ -37,15 +37,17 @@ logger = logging.getLogger(__name__)
 
 class ScrapeMode(str, Enum):
     """Scraping mode options."""
+
     RECURSIVE = "recursive"  # Crawl entire site from base URL
-    SINGLE = "single"        # Scrape single page only
-    SITEMAP = "sitemap"      # Parse sitemap.xml for URLs
-    URL_LIST = "url_list"    # Scrape provided list of URLs
+    SINGLE = "single"  # Scrape single page only
+    SITEMAP = "sitemap"  # Parse sitemap.xml for URLs
+    URL_LIST = "url_list"  # Scrape provided list of URLs
 
 
 @dataclass
 class ScraperConfig:
     """Configuration for the web scraper."""
+
     # Concurrency settings
     max_concurrent_pages: int = 10
     max_concurrent_browsers: int = 3
@@ -77,12 +79,20 @@ class ScraperConfig:
     use_browser_for_all: bool = False  # Use Playwright for all pages (slower but more reliable)
 
     # Ignored elements/classes for HTML cleanup
-    ignored_elements: list[str] = field(default_factory=lambda: [
-        "script", "style", "noscript", "nav", "footer", "header"
-    ])
-    ignored_classes: list[str] = field(default_factory=lambda: [
-        "sidebar", "nav", "footer", "header", "menu", "advertisement", "ad"
-    ])
+    ignored_elements: list[str] = field(
+        default_factory=lambda: ["script", "style", "noscript", "nav", "footer", "header"]
+    )
+    ignored_classes: list[str] = field(
+        default_factory=lambda: [
+            "sidebar",
+            "nav",
+            "footer",
+            "header",
+            "menu",
+            "advertisement",
+            "ad",
+        ]
+    )
 
 
 # Browser headers to mimic real browser
@@ -108,8 +118,12 @@ DEFAULT_HEADERS = {
 }
 
 PDF_MIME_TYPES = [
-    "application/pdf", "application/x-pdf", "application/acrobat",
-    "application/vnd.pdf", "text/pdf", "text/x-pdf",
+    "application/pdf",
+    "application/x-pdf",
+    "application/acrobat",
+    "application/vnd.pdf",
+    "text/pdf",
+    "text/x-pdf",
 ]
 
 
@@ -274,13 +288,15 @@ class WebScraper:
             Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] });
         """)
 
-        await context.set_extra_http_headers({
-            "Accept": DEFAULT_HEADERS["Accept"],
-            "Accept-Language": DEFAULT_HEADERS["Accept-Language"],
-            "Sec-CH-UA": DEFAULT_HEADERS["Sec-CH-UA"],
-            "Sec-CH-UA-Mobile": DEFAULT_HEADERS["Sec-CH-UA-Mobile"],
-            "Sec-CH-UA-Platform": DEFAULT_HEADERS["Sec-CH-UA-Platform"],
-        })
+        await context.set_extra_http_headers(
+            {
+                "Accept": DEFAULT_HEADERS["Accept"],
+                "Accept-Language": DEFAULT_HEADERS["Accept-Language"],
+                "Sec-CH-UA": DEFAULT_HEADERS["Sec-CH-UA"],
+                "Sec-CH-UA-Mobile": DEFAULT_HEADERS["Sec-CH-UA-Mobile"],
+                "Sec-CH-UA-Platform": DEFAULT_HEADERS["Sec-CH-UA-Platform"],
+            }
+        )
 
         return context
 
@@ -492,7 +508,7 @@ class WebScraper:
             for attempt in range(self.config.max_retries):
                 try:
                     if attempt > 0:
-                        await asyncio.sleep(self.config.retry_delay * (2 ** attempt))
+                        await asyncio.sleep(self.config.retry_delay * (2**attempt))
 
                     if use_browser or self.config.use_browser_for_all:
                         result = await self._scrape_with_browser(url)

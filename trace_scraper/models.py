@@ -8,6 +8,7 @@ from typing import Any
 @dataclass
 class TextSection:
     """A section of text from a scraped page."""
+
     text: str
     link: str
 
@@ -15,6 +16,7 @@ class TextSection:
 @dataclass
 class ScrapedPage:
     """Raw scraped page data before conversion to Document."""
+
     url: str
     title: str | None
     text: str
@@ -26,6 +28,7 @@ class ScrapedPage:
 @dataclass
 class Document:
     """A document extracted from a web page."""
+
     id: str
     sections: list[TextSection]
     source: str = "web"

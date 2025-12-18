@@ -68,11 +68,7 @@ def test_extract_links():
     </html>
     """
     soup = BeautifulSoup(html, "html.parser")
-    links = extract_links(
-        "https://example.com",
-        "https://example.com/current",
-        soup
-    )
+    links = extract_links("https://example.com", "https://example.com/current", soup)
 
     assert "https://example.com/page1" in links
     assert "https://example.com/page2" in links

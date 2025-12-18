@@ -9,6 +9,7 @@ import bs4
 @dataclass
 class ParsedHTML:
     """Parsed HTML content."""
+
     title: str | None
     cleaned_text: str
 
@@ -32,10 +33,7 @@ def strip_newlines(document: str) -> str:
     return re.sub(r"[\n\r]+", " ", document)
 
 
-def format_document_soup(
-    document: bs4.BeautifulSoup,
-    table_cell_separator: str = "\t"
-) -> str:
+def format_document_soup(document: bs4.BeautifulSoup, table_cell_separator: str = "\t") -> str:
     """Format HTML soup to plain text.
 
     Goals:
@@ -65,13 +63,17 @@ def format_document_soup(
                 last_added_newline = False
 
             if element_text:
-                content_to_add = element_text if verbatim_output > 0 else strip_newlines(element_text)
+                content_to_add = (
+                    element_text if verbatim_output > 0 else strip_newlines(element_text)
+                )
 
                 # Add link formatting if available
                 if link_href and content_to_add.strip():
                     content_to_add = f"[{content_to_add}]({link_href})"
 
-                if (text and not text[-1].isspace()) and (content_to_add and not content_to_add[0].isspace()):
+                if (text and not text[-1].isspace()) and (
+                    content_to_add and not content_to_add[0].isspace()
+                ):
                     text += " "
 
                 text += content_to_add

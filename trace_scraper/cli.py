@@ -85,36 +85,42 @@ Examples:
 
     parser.add_argument("url", help="URL to scrape (base URL, sitemap URL, or single page)")
     parser.add_argument(
-        "--mode", "-m",
+        "--mode",
+        "-m",
         choices=["single", "recursive", "sitemap"],
         default="single",
         help="Scraping mode (default: single)",
     )
     parser.add_argument(
-        "--output", "-o",
+        "--output",
+        "-o",
         type=Path,
         help="Output JSON file path",
     )
     parser.add_argument(
-        "--concurrency", "-c",
+        "--concurrency",
+        "-c",
         type=int,
         default=10,
         help="Maximum concurrent pages (default: 10)",
     )
     parser.add_argument(
-        "--timeout", "-t",
+        "--timeout",
+        "-t",
         type=float,
         default=30.0,
         help="Page timeout in seconds (default: 30)",
     )
     parser.add_argument(
-        "--retries", "-r",
+        "--retries",
+        "-r",
         type=int,
         default=3,
         help="Maximum retries per page (default: 3)",
     )
     parser.add_argument(
-        "--delay", "-d",
+        "--delay",
+        "-d",
         type=float,
         default=0.1,
         help="Delay between requests in seconds (default: 0.1)",
@@ -140,7 +146,8 @@ Examples:
         help="Run browser in headed mode (visible)",
     )
     parser.add_argument(
-        "--verbose", "-v",
+        "--verbose",
+        "-v",
         action="store_true",
         help="Enable verbose logging",
     )
