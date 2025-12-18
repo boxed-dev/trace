@@ -230,7 +230,7 @@ class WebScraper:
         await self._initialize()
         return self
 
-    async def __aexit__(self, *args) -> None:
+    async def __aexit__(self, *args: object) -> None:
         await self._cleanup()
 
     async def _initialize(self) -> None:
@@ -570,10 +570,12 @@ class WebScraper:
 
         elif mode == ScrapeMode.SITEMAP:
             async with httpx.AsyncClient(headers=DEFAULT_HEADERS, follow_redirects=True) as client:
-                sitemap_urls = await extract_urls_from_sitemap(client, url)
-                if not sitemap_urls:
-                    sitemap_urls = await discover_urls_from_site(url)
-            to_scrape = list(sitemap_urls)
+                sitemap_urls_set = await extract_urls_from_sitemap(client, url)
+                if not sitemap_urls_set:
+                    sitemap_urls_list = await discover_urls_from_site(url)
+                    to_scrape = sitemap_urls_list
+                else:
+                    to_scrape = list(sitemap_urls_set)
             if not to_scrape:
                 raise ValueError(f"No URLs found in sitemap: {url}")
 
@@ -582,16 +584,16 @@ class WebScraper:
 
         # Process URLs
         base_url = url
-        queue = asyncio.Queue()
+        queue: asyncio.Queue[str] = asyncio.Queue()
         for u in to_scrape:
             await queue.put(u)
 
-        async def worker():
+        async def worker() -> Document | None:
             while True:
                 try:
                     current_url = queue.get_nowait()
                 except asyncio.QueueEmpty:
-                    break
+                    return None
 
                 if current_url in self._visited:
                     continue

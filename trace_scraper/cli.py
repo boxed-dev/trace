@@ -21,7 +21,7 @@ def setup_logging(verbose: bool = False) -> None:
     )
 
 
-def document_to_dict(doc: Document) -> dict:
+def document_to_dict(doc: Document) -> dict[str, object]:
     """Convert Document to JSON-serializable dict."""
     return {
         "id": doc.id,
