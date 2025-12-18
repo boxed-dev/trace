@@ -1,6 +1,7 @@
 """Tests for scraper utilities."""
 
 import pytest
+from bs4 import BeautifulSoup
 
 from trace_scraper.scraper import (
     ensure_valid_url,
@@ -8,7 +9,6 @@ from trace_scraper.scraper import (
     is_same_site,
     validate_url,
 )
-from bs4 import BeautifulSoup
 
 
 def test_ensure_valid_url_adds_scheme():
@@ -77,4 +77,4 @@ def test_extract_links():
     assert "https://example.com/page1" in links
     assert "https://example.com/page2" in links
     assert "https://external.com/page" not in links  # External
-    assert len([l for l in links if "#" in l]) == 0  # No anchors
+    assert len([link for link in links if "#" in link]) == 0  # No anchors

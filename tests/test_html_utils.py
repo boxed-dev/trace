@@ -1,6 +1,5 @@
 """Tests for HTML utilities."""
 
-import pytest
 
 from trace_scraper.html_utils import clean_html, strip_excessive_newlines_and_spaces
 

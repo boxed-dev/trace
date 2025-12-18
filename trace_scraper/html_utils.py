@@ -155,7 +155,8 @@ def clean_html(
         classes_to_remove.extend(MINTLIFY_UNWANTED)
 
     for unwanted_class in classes_to_remove:
-        for tag in soup.find_all(class_=lambda x: x and unwanted_class in x.split()):
+        cls = unwanted_class  # Bind to local variable for lambda
+        for tag in soup.find_all(class_=lambda x, c=cls: x and c in x.split()):
             tag.extract()
 
     # Convert to text

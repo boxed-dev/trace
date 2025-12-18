@@ -8,7 +8,7 @@ Run with: python -m examples.basic_usage
 import asyncio
 import logging
 
-from trace_scraper import Document, ScraperConfig, ScrapeMode, WebScraper
+from trace_scraper import Document, ScrapeMode, ScraperConfig, WebScraper
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 

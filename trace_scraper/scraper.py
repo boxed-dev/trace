@@ -18,10 +18,10 @@ import io
 import ipaddress
 import logging
 import socket
+from collections.abc import AsyncIterator, Callable
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from enum import Enum
-from typing import AsyncIterator, Callable
 from urllib.parse import urljoin, urlparse
 
 import httpx
@@ -131,7 +131,7 @@ def validate_url(url: str, check_global_ip: bool = True) -> None:
                 if not ipaddress.ip_address(ip).is_global:
                     raise ValueError(f"Non-global IP address: {ip}")
         except socket.gaierror as e:
-            raise ConnectionError(f"DNS resolution failed for {parsed.hostname}: {e}")
+            raise ConnectionError(f"DNS resolution failed for {parsed.hostname}: {e}") from e
 
 
 def is_same_site(base_url: str, candidate_url: str) -> bool:
@@ -195,7 +195,7 @@ def parse_last_modified(header: str | None) -> datetime | None:
     if not header:
         return None
     try:
-        return datetime.strptime(header, "%a, %d %b %Y %H:%M:%S %Z").replace(tzinfo=timezone.utc)
+        return datetime.strptime(header, "%a, %d %b %Y %H:%M:%S %Z").replace(tzinfo=UTC)
     except (ValueError, TypeError):
         return None
 

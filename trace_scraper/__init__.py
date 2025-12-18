@@ -2,8 +2,8 @@
 Trace: High-performance async web scraper.
 """
 
-from .scraper import WebScraper, ScraperConfig, ScrapeMode
-from .models import Document, TextSection, ScrapedPage
+from .models import Document, ScrapedPage, TextSection
+from .scraper import ScrapeMode, ScraperConfig, WebScraper
 
 __version__ = "1.0.0"
 __all__ = [

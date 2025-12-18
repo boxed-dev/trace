@@ -1,6 +1,6 @@
 """Tests for data models."""
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from trace_scraper.models import Document, ScrapedPage, TextSection
 
@@ -25,7 +25,7 @@ def test_scraped_page_creation():
 
 def test_document_from_scraped_page():
     """Test Document creation from ScrapedPage."""
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     page = ScrapedPage(
         url="https://example.com/page",
         title="Test Page",
