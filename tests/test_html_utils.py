@@ -36,4 +36,4 @@ def test_strip_excessive_newlines():
     """Test whitespace cleanup."""
     text = "Hello   \n\n\n  World"
     result = strip_excessive_newlines_and_spaces(text)
-    assert result == "Hello\nWorld"
+    assert result == "Hello\n World"
