@@ -71,7 +71,7 @@ trace https://example.com --output results.json
 
 ```python
 import asyncio
-from trace import WebScraper, ScrapeMode
+from trace_scraper import WebScraper, ScrapeMode
 
 async def main():
     async with WebScraper() as scraper:
@@ -86,7 +86,7 @@ if __name__ == "__main__":
 ### Custom Configuration
 
 ```python
-from trace import WebScraper, ScraperConfig
+from trace_scraper import WebScraper, ScraperConfig
 
 config = ScraperConfig(
     max_concurrent_pages=20,
@@ -129,7 +129,7 @@ pytest
 ruff check .
 
 # Run type checker
-mypy trace
+mypy trace_scraper
 ```
 
 ## License
