@@ -2,7 +2,7 @@
 
 import pytest
 
-from trace.scraper import (
+from trace_scraper.scraper import (
     ensure_valid_url,
     extract_links,
     is_same_site,

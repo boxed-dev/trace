@@ -2,7 +2,7 @@
 
 from datetime import datetime, timezone
 
-from trace.models import Document, ScrapedPage, TextSection
+from trace_scraper.models import Document, ScrapedPage, TextSection
 
 
 def test_text_section_creation():

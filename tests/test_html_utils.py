@@ -2,7 +2,7 @@
 
 import pytest
 
-from trace.html_utils import clean_html, strip_excessive_newlines_and_spaces
+from trace_scraper.html_utils import clean_html, strip_excessive_newlines_and_spaces
 
 
 def test_clean_html_extracts_title(sample_html: str):
